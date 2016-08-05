@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>radar-reader</title>
+    <script>
+      var clientWidth = document.documentElement.clientWidth
+      document.documentElement.setAttribute('style', 'font-size:' + clientWidth / 10 + 'px')
+      window.onresize = function () {
+        var clientWidth = document.documentElement.clientWidth
+        document.documentElement.setAttribute('style', 'font-size:' + clientWidth / 10 + 'px')
+      }
+    </script>
+  </head>
+  <body>
+    <router-view></router-view>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

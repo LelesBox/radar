@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="label-compomemt">
     <tags class="label-compomemt__tags"></tags>
-    <container class="label-compomemt__container lable-container">
-      {{count}}
+    <container class="label-compomemt__container label-container">
+      <label-item class="label-container__item" v-for="key in count"></label-item>
     </container>
     <foot-indexs class="label-compomemt__foot"></footfoot-indexs>
   </div>
@@ -47,8 +47,8 @@ export default {
     left: 50%;
     top:50%;
     height: 500px;
-    width: 6rem;
-    min-width: 600px;
+    // width: 6rem;
+    min-width: 1000px;
     background-color: red;
     &__tags {
       height: 50px;
@@ -61,6 +61,15 @@ export default {
     &__foot {
       height: 50px;
       background-color: pink;
+    }
+  }
+
+  .label-container{
+    &__item{
+      width: 16.6%;
+      height: 33.33%;
+      float: left;
+      border: 1px solid red;
     }
   }
 </style>

@@ -1,6 +1,6 @@
 <template lang="html">
-  <div>
-    <slot></slot>
+  <div class="panel">
+
   </div>
 </template>
 
@@ -19,7 +19,4 @@ export default {
 </script>
 
 <style lang="css">
-  /*.label-item{
-
-  }*/
 </style>

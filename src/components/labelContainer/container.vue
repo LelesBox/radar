@@ -6,8 +6,12 @@
 
 <script>
 export default {
+  props: {
+    count: Number
+  },
   data: function () {
     return {
+      pageCount: 16
     }
   },
   computed: {},

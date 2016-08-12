@@ -4,7 +4,107 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  count: 0
+  count: 0,
+  bookmarkTypes: [
+    'favorite'
+  ],
+  radarBookmarks: [
+    [
+      {
+        type: 'default',
+        img: '',
+        text: '1',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '2',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '3',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '4',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '5',
+        description: ''
+      }
+    ],
+    [
+      {
+        type: 'default',
+        img: '',
+        text: '1',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '2',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '3',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '4',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '5',
+        description: ''
+      }
+    ], [
+      {
+        type: 'default',
+        img: '',
+        text: '1',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '2',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '3',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '4',
+        description: ''
+      },
+      {
+        type: 'default',
+        img: '',
+        text: '5',
+        description: ''
+      }
+    ]
+  ]
 }
 
 const mutations = {

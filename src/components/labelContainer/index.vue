@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="label-compomemt">
     <tags class="label-compomemt__tags"></tags>
-    <container class="label-compomemt__container label-container">
-      <label-item class="label-container__item" v-for="key in count"></label-item>
+    <container class="label-compomemt__container label-container" :count="count">
+      <label-item class="label-container__item" v-for="key in count">{{key}}</label-item>
     </container>
     <foot-indexs class="label-compomemt__foot"></footfoot-indexs>
   </div>
@@ -23,7 +23,8 @@ export default {
   },
   vuex: {
     getters: {
-      count: getCount
+      count: getCount,
+      radarBookmarks: state => state.radarBookmarks
     }
   },
   computed: {},
@@ -47,7 +48,6 @@ export default {
     left: 50%;
     top:50%;
     height: 500px;
-    // width: 6rem;
     min-width: 1000px;
     background-color: red;
     &__tags {

@@ -1,22 +1,30 @@
 <template lang="html">
-  <div>
-
+  <div class="page" :style="pageStyle">
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
+  props: ['width'],
+  computed: {
+    pageStyle: function () {
+      return {
+        width: this.width + 'px'
+      }
     }
   },
-  computed: {},
-  ready: function () {},
+  ready: function () { },
   attached: function () {},
   methods: {},
   components: {}
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+  .page {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+  }
 </style>

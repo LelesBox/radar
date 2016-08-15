@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Mutations from './mutations'
 
 Vue.use(Vuex)
 
@@ -107,13 +108,7 @@ const state = {
   ]
 }
 
-const mutations = {
-  INCREMENT: function (state, mutation) {
-    state.count = state.count + mutation.playload
-  }
-}
-
 export default new Vuex.Store({
   state: state,
-  mutations: mutations
+  mutations: Mutations
 })

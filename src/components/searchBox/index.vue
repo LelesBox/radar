@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { incrementCounter } from '../../vuex/actions'
+import { updateRadarBookmarks } from '../../vuex/actions'
 export default {
   data: function () {
     return {
@@ -20,7 +20,14 @@ export default {
   },
   vuex: {
     actions: {
-      increment: incrementCounter(2)
+      increment: updateRadarBookmarks(
+        {
+          type: 'default',
+          img: '',
+          text: '666',
+          description: ''
+        }
+      )
     }
   },
   computed: {},

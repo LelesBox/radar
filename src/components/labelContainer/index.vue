@@ -4,22 +4,21 @@
     <container class="label-compomemt__container label-container" :count="count" @mousewheel="mouseWheel">
       <ul class="label-compomemt__panel" v-el:panel>
         <page :width = 'clientWidth'>
-          <label-item class="label-container__item" v-for="key in radarBookmarks[radarBookmarks.length - 1]">{{key.text}}</label-item>
+          <div class="label-container__item" v-for="key in radarBookmarks[radarBookmarks.length - 1]">{{key.text}}</div>
         </page>
         <page v-for="pageOfBookmarks in radarBookmarks" :width = 'clientWidth'>
-          <label-item class="label-container__item" v-for="key in pageOfBookmarks">{{key.text}}</label-item>
+          <div class="label-container__item" v-for="key in pageOfBookmarks">{{key.text}}</div>
         </page>
         <page :width = 'clientWidth'>
-          <label-item class="label-container__item" v-for="key in radarBookmarks[0]">{{key.text}}</label-item>
+          <div class="label-container__item" v-for="key in radarBookmarks[0]">{{key.text}}</div>
         </page>
       </ul>
     </container>
-    <foot-indexs class="label-compomemt__foot"></footfoot-indexs>
+    <foot-indexs class="label-compomemt__foot" :index.sync="index" :length="radarBookmarks.length"></footfoot-indexs>
   </div>
 </template>
 
 <script>
-import labelItem from './item'
 import tags from './tags'
 import container from './container'
 import page from './page'
@@ -44,8 +43,14 @@ export default {
   },
   computed: {},
   watch: {
-    index: function (oldval, newval) {
-      console.log(`oldvalue:${oldval},newvalue:${newval}`)
+    index: function (newval, oldval) {
+      if (oldval === this.radarBookmarks.length && newval === 0) {
+        return
+      } else if (oldval === -1 && newval === this.radarBookmarks.length - 1) {
+        return
+      } else {
+        this.translate(newval)
+      }
     }
   },
   ready: function () {
@@ -59,30 +64,43 @@ export default {
         var deltaX = e.deltaX
         var deltaY = e.deltaY
         if (deltaY > 0 || deltaX > 0) {
-          console.log('next page')
+          this.next()
         } else if (deltaY < 0 || deltaX < 0) {
-          console.log('prev page')
+          this.prev()
         }
         setTimeout(() => {
           this.isScroll = false
-        }, 1000)
+        }, 200)
       }
     },
+    next: function () {
+      this.index ++
+    },
+    prev: function () {
+      this.index --
+    },
     translate: function (offset) {
+      if (this.index === this.radarBookmarks.length) {
+        this.index = 0
+      } else if (this.index === -1) {
+        this.index = this.radarBookmarks.length - 1
+      }
       let container = this.$els.panel
       if (!this.onTranslate) {
         container.style.webkitTransition = 'transform .2s ease'
-        setTimeout(() => { container.style.webkitTransform = `translate3d(${offset * this.clientWidth}px, 0, 0)` }, 50)
+        setTimeout(() => { container.style.webkitTransform = `translate3d(${-offset * this.clientWidth}px, 0, 0)` }, 50)
         once(container, 'webkitTransitionEnd', () => {
-          // container.style.webkitTransition = ''
-          // 边界问题
-          console.log('done')
+          container.style.webkitTransition = ''
+          if (this.index === this.radarBookmarks.length) {
+            container.style.webkitTransform = 'translate3d(0, 0, 0)'
+          } else if (this.index === -1) {
+            container.style.webkitTransform = `translate3d(${-this.index * this.clientWidth}px, 0, 0)`
+          }
         })
       }
     }
   },
   components: {
-    labelItem: labelItem,
     tags: tags,
     container: container,
     page: page,
@@ -92,16 +110,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .label-compomemt{
+  .label-compomemt {
     position: absolute;
-    transform: scale(.3);
-    // transform: translate(-50%,-50%) scale(.5);
-    // left: 50%;
-    // top:50%;
-    left: 0;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top:50%;
     height: 500px;
     width: 1000px;
-    background-color: red;
     &__tags {
       height: 50px;
       background-color: green;
@@ -109,6 +124,7 @@ export default {
     &__container {
       height: 400px;
       background-color: yellow;
+      overflow: hidden;
     }
     &__panel {
       position: relative;
@@ -119,7 +135,6 @@ export default {
     }
     &__foot {
       height: 50px;
-      background-color: pink;
     }
   }
 

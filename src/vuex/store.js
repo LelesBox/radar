@@ -7,7 +7,7 @@ Vue.use(Vuex)
 const state = {
   count: 0,
   bookmarkTypes: [
-    'favorite'
+    'favorite', 'FE'
   ],
   radarBookmarks: [
     [
@@ -38,7 +38,7 @@ const state = {
       {
         type: 'default',
         img: '',
-        text: '5',
+        text: '0000',
         description: ''
       }
     ],
@@ -70,7 +70,7 @@ const state = {
       {
         type: 'default',
         img: '',
-        text: '5',
+        text: '1111',
         description: ''
       }
     ], [
@@ -101,7 +101,7 @@ const state = {
       {
         type: 'default',
         img: '',
-        text: '5',
+        text: '2222',
         description: ''
       }
     ]

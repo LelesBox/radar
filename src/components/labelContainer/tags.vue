@@ -1,21 +1,20 @@
 <template lang="html">
-  <div>
+  <div class="tag">
+    <slot>
+
+    </slot>
   </div>
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
+  vuex: {
+    getters: {
+      tags: state => state.bookmarkTypes
     }
-  },
-  computed: {},
-  ready: function () {},
-  attached: function () {},
-  methods: {},
-  components: {}
+  }
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
 </style>

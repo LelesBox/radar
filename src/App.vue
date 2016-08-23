@@ -13,13 +13,27 @@ body {
     * {
         box-sizing: border-box;
     }
+    .center-container{
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+    }
+    .search-box{
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 40px;
+    }
 }
 
 </style>
 
 <template>
-  <search-box></search-box>
-  <label-container></label-container>
+  <div class="center-container">
+    <search-box class="search-box"></search-box>
+    <label-container></label-container>
+  </div>
   <corner></corner>
 </template>
 

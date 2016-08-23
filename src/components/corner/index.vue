@@ -20,21 +20,22 @@
         @extend %corner-basic;
         border-radius: 0 0 100% 0;
         background-color: red;
-        &:hover {
-            @extend %corner-hover;
-        }
+        left:0;
+        top:0;
     }
     &__left-bottom {
         @extend %corner-basic;
         border-radius: 0 100% 0 0;
         background-color: yellow;
         bottom: 0;
+        left:0;
     }
     &__right-top {
         @extend %corner-basic;
         border-radius: 0 0 0 100%;
         background-color: green;
         right: 0;
+        top:0;
     }
     &__right-bottom {
         @extend %corner-basic;

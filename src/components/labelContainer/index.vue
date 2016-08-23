@@ -111,10 +111,10 @@ export default {
 
 <style lang="scss">
   .label-compomemt {
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top:50%;
+    // position: absolute;
+    // transform: translate(-50%,0);
+    // left: 50%;
+    // top:50%;
     height: 500px;
     width: 1000px;
     &__tags {

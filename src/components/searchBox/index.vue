@@ -41,10 +41,6 @@ export default {
 
 <style lang="scss">
   .search-box {
-    position: absolute;
-    left: 50%;
-    top:50px;
-    transform: translateX(-50%);
     height: 50px;
     width: 600px;
     border-radius: 25px;

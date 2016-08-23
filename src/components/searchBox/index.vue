@@ -6,7 +6,6 @@
 
     </div>
     <div class="search-box__search">
-
     </div>
   </div>
 </template>
@@ -52,6 +51,12 @@ export default {
       border-radius: 25px 0 0 25px;
       background-color: red;
       background-color: green;
+    }
+    &__input{
+      float: left;
+      width: 460px;
+      height: 100%;
+      background-color: yellow;
     }
   }
 </style>

@@ -10,21 +10,25 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
+    background-image: url("http://img.infinitynewtab.com/bingWallpaper/bgblur.jpg?month=8&date=23");
     * {
         box-sizing: border-box;
     }
-    .center-container{
-      position: absolute;
-      top:50%;
-      left:50%;
-      transform: translate(-50%,-50%);
-    }
-    .search-box{
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-bottom: 40px;
-    }
+}
+
+.center-container{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 20px;
+  color: #ffffff;
+}
+.search-box{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
 }
 
 </style>

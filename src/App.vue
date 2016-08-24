@@ -42,6 +42,7 @@ body {
 </template>
 
 <script>
+require('./assets/css/font-awesome.css')
 import Corner from './components/corner'
 import labelContainer from './components/labelContainer'
 import searchBox from './components/searchBox'

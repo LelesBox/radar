@@ -38,7 +38,7 @@ export default {
   vuex: {
     getters: {
       count: getCount,
-      radarBookmarks: state => state.radarBookmarks
+      radarBookmarks: state => state.radarBookmarks.bookmarks
     }
   },
   computed: {},
@@ -87,7 +87,7 @@ export default {
       }
       let container = this.$els.panel
       if (!this.onTranslate) {
-        container.style.webkitTransition = 'transform .2s ease'
+        container.style.webkitTransition = 'transform .2s ease-in'
         setTimeout(() => { container.style.webkitTransform = `translate3d(${-offset * this.clientWidth}px, 0, 0)` }, 50)
         once(container, 'webkitTransitionEnd', () => {
           container.style.webkitTransition = ''

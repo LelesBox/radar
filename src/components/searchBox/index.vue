@@ -9,6 +9,10 @@
     <div class="search-box__search" :style="{ opacity: opacity }" @click="search" @mouseover="mouseover" @mouseleave="mouseleave">
         <i class="fa fa-search"></i>
     </div>
+    <ul class="dropdown">
+      <li v-for="engine in engines" :style="{ 'background-image': 'url(' + engine.img + ')', 'background-size': 'cover'}">
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -111,6 +115,27 @@ export default {
       &:hover{
         background-color: rgba(46, 204, 113, .9);
         opacity: 1;
+      }
+    }
+  }
+  .dropdown {
+    // background: rgba(255,255,255,.6);
+    background: pink;
+    position: relative;
+    z-index: 9999;
+    border-radius: 10px;
+    display:inline-block;
+    padding:10px;
+    margin:10px;
+    list-style: none;
+    cursor: pointer;
+    li {
+      height: 30px;
+      width: 30px;
+      margin: 10px 0;
+      cursor: pointer;
+      &:hover {
+        background-color: yellow;
       }
     }
   }

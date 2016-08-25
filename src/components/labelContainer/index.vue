@@ -87,7 +87,7 @@ export default {
       }
       let container = this.$els.panel
       if (!this.onTranslate) {
-        container.style.webkitTransition = 'transform .2s ease-in'
+        container.style.webkitTransition = 'transform 5s ease-in'
         setTimeout(() => { container.style.webkitTransform = `translate3d(${-offset * this.clientWidth}px, 0, 0)` }, 50)
         once(container, 'webkitTransitionEnd', () => {
           container.style.webkitTransition = ''
@@ -113,6 +113,7 @@ export default {
   .label-compomemt {
     height: 500px;
     width: 1000px;
+    background: red;
     &__tags {
       height: 50px;
       margin-bottom: 20px;
@@ -122,11 +123,13 @@ export default {
       overflow: hidden;
     }
     &__panel {
-      position: relative;
+      // position: relative;
+      z-index: 1;
       margin: 0;
       padding: 0;
       height: 100%;
       left: -100%;
+      background-color: green;
     }
     &__foot {
       height: 50px;

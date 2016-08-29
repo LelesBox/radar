@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="search-box">
-    <div class="search-box__search-engine">
+    <div class="search-box__search-engine" @click="openDropdown">
       <img :src="currentEngine.img" alt=""/>
     </div>
     <div class="search-box__input">
@@ -9,8 +9,9 @@
     <div class="search-box__search" :style="{ opacity: opacity }" @click="search" @mouseover="mouseover" @mouseleave="mouseleave">
         <i class="fa fa-search"></i>
     </div>
-    <ul class="dropdown">
-      <li v-for="engine in engines" :style="{ 'background-image': 'url(' + engine.img + ')', 'background-size': 'cover'}">
+    <ul class="dropdown" v-show="isOpenDropdown">
+      <li v-for="engine in engines">
+        <div :style="{ 'background-image': 'url(' + engine.img + ')', 'background-size': 'cover'}" @click="chooseEngine(engine)"></div>
       </li>
     </ul>
   </div>
@@ -32,7 +33,12 @@ export default {
   vuex: {
     getters: {
       engines: state => state.search.engines,
+      isOpenDropdown: state => state.search.isOpenDropdown,
       currentEngine: state => state.search.current
+    },
+    actions: {
+      chooseEngine: (state, engine) => state.dispatch('CHOOSE_ENGINE', engine),
+      openDropdown: state => state.dispatch('OPEN_DROPDOWN')
     }
   },
   methods: {
@@ -58,7 +64,7 @@ export default {
     },
     search: function () {
       if (this.searchText !== '') {
-        console.log('search ' + this.searchText)
+        window.open(`${this.currentEngine.url}${this.searchText}`)
       }
     }
   },
@@ -72,6 +78,8 @@ export default {
     width: 600px;
     border-radius: 25px;
     background-color: #ffffff;
+    position:relative;
+    z-index: 999;
     &__search-engine {
       float: left;
       width: 70px;
@@ -119,23 +127,26 @@ export default {
     }
   }
   .dropdown {
-    // background: rgba(255,255,255,.6);
-    background: pink;
+    background: rgba(255,192,203,.9);
     position: relative;
     z-index: 9999;
     border-radius: 10px;
     display:inline-block;
-    padding:10px;
+    padding:10px 0;
     margin:10px;
     list-style: none;
     cursor: pointer;
     li {
-      height: 30px;
-      width: 30px;
-      margin: 10px 0;
+      height: 50px;
+      width: 50px;
+      padding: 10px;
       cursor: pointer;
+      div {
+        height: 100%;
+        width: 100%;
+      }
       &:hover {
-        background-color: yellow;
+        background-color: rgba(255,255,255,.2);
       }
     }
   }

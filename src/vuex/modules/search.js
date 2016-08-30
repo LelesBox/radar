@@ -30,7 +30,7 @@ const mutations = {
     state.isOpenDropdown = false
   },
   OPEN_DROPDOWN (state) {
-    state.isOpenDropdown = true
+    state.isOpenDropdown = !state.isOpenDropdown
   }
 }
 

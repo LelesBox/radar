@@ -40,7 +40,7 @@ const state = {
       {
         type: 'default',
         img: '',
-        text: '20000',
+        text: '0000',
         description: ''
       }
     ],

@@ -38,7 +38,9 @@ export default {
     },
     actions: {
       chooseEngine: (state, engine) => state.dispatch('CHOOSE_ENGINE', engine),
-      openDropdown: state => state.dispatch('OPEN_DROPDOWN')
+      openDropdown: (state) => {
+        state.dispatch('OPEN_DROPDOWN')
+      }
     }
   },
   methods: {

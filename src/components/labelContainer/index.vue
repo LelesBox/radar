@@ -74,28 +74,35 @@ export default {
       }
     },
     next: function () {
-      this.index ++
+      if (!this.onTranslate) {
+        this.index ++
+      }
     },
     prev: function () {
-      this.index --
+      if (!this.onTranslate) {
+        this.index --
+      }
     },
     translate: function (offset) {
-      if (this.index === this.radarBookmarks.length) {
-        this.index = 0
-      } else if (this.index === -1) {
-        this.index = this.radarBookmarks.length - 1
-      }
       let container = this.$els.panel
       if (!this.onTranslate) {
-        container.style.webkitTransition = 'transform 5s ease-in'
+        this.onTranslate = true
+        var index = this.index
+        if (this.index === this.radarBookmarks.length) {
+          this.index = 0
+        } else if (this.index === -1) {
+          this.index = this.radarBookmarks.length - 1
+        }
+        container.style.webkitTransition = 'transform .2s ease-in'
         setTimeout(() => { container.style.webkitTransform = `translate3d(${-offset * this.clientWidth}px, 0, 0)` }, 50)
         once(container, 'webkitTransitionEnd', () => {
           container.style.webkitTransition = ''
-          if (this.index === this.radarBookmarks.length) {
+          if (index === this.radarBookmarks.length) {
             container.style.webkitTransform = 'translate3d(0, 0, 0)'
-          } else if (this.index === -1) {
+          } else if (index === -1) {
             container.style.webkitTransform = `translate3d(${-this.index * this.clientWidth}px, 0, 0)`
           }
+          this.onTranslate = false
         })
       }
     }
@@ -113,7 +120,7 @@ export default {
   .label-compomemt {
     height: 500px;
     width: 1000px;
-    background: red;
+    background: yellow;
     &__tags {
       height: 50px;
       margin-bottom: 20px;
@@ -123,12 +130,13 @@ export default {
       overflow: hidden;
     }
     &__panel {
-      // position: relative;
+      position: relative;
       z-index: 1;
       margin: 0;
       padding: 0;
-      height: 100%;
       left: -100%;
+      height: 100%;
+      font-size: 50px;
       background-color: green;
     }
     &__foot {

@@ -12,7 +12,7 @@
 export default {
   vuex: {
     getters: {
-      tags: state => state.bookmarkTypes
+      tags: state => state.radarBookmarks.types
     }
   }
 }

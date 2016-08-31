@@ -120,7 +120,6 @@ export default {
   .label-compomemt {
     height: 500px;
     width: 1000px;
-    background: yellow;
     &__tags {
       height: 50px;
       margin-bottom: 20px;
@@ -137,7 +136,6 @@ export default {
       left: -100%;
       height: 100%;
       font-size: 50px;
-      background-color: green;
     }
     &__foot {
       height: 50px;
